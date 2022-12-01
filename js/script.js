@@ -15,11 +15,13 @@ let score = 0;
 let exitSingleNum;
 
 btn.addEventListener('click', function(){
+    gameStatus = true;
 
+    score = 0;
+    scoreElement.innerText = (score);
 
     squareBox.innerHTML = "";
 
-    gameStatus = true;
 
 
     for (let i = 0 ; i < 100 ; i++){
@@ -29,12 +31,17 @@ btn.addEventListener('click', function(){
             console.log(i + 1);
             clickedNumbers.push(i + 1);
             exitSingleNum = i + 1;
-            score += 1;
-            scoreElement.innerText = (score);
+            
             
             if (bombList.includes(exitSingleNum)){
                 console.log('Bomba');
+                scoreElement.innerText = (`Hai perso! Il tuo punteggio è: ${score}`);
+                gameStatus = false
+            } else {
+                score += 1;
+                scoreElement.innerText = (score);
             }
+
         })
         addDiv.innerText = (i + 1);
         squareBox.append(addDiv);
@@ -49,7 +56,9 @@ btn.addEventListener('click', function(){
     console.log(clickedNumbers);
     console.log(exitSingleNum)
     
-
+    if (score == (100 - 16)){
+        scoreElement.innerText = ("Hai vinto!");
+    }
 
 
 })

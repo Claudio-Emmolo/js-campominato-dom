@@ -4,16 +4,19 @@ const squareBox = document.querySelector ("div.square-box");
 
 const scoreElement = document.getElementById("score");
 
-const clickedNumbers = [];
+const bombGif = document.getElementById("bomb-gif")
 
 let exitSingleNum;
 
 btn.addEventListener('click', function(){
     let gameStatus = true;
     squareBox.innerHTML = "";
+    const clickedNumbers = [];
     let bombList = [];
     let score = 0;
     scoreElement.innerText = (score);
+
+    bombGif.classList.remove("d-block")
 
  // Inizio il gioco
     for (let i = 0 ; i < 100 ; i++){ // Genero i 100 numeri
@@ -30,9 +33,10 @@ btn.addEventListener('click', function(){
             
             if (bombList.includes(exitSingleNum)){ // Controllo se un numero nella lista delle bombe è stato cliccato 
                 console.log('Bomba');
-                scoreElement.innerText = (`Hai perso! Il tuo punteggio è: ${score}`);
+                scoreElement.innerHTML = (`Hai perso! </br> Il tuo punteggio è: </br> ${score}`);
                 gameStatus = false;
                 addDiv.classList.add("boom");
+                bombGif.classList.add("d-block")
             } else {
                 score += 1;
                 scoreElement.innerText = (score);

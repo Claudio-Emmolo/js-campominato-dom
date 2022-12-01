@@ -1,12 +1,16 @@
 main{
-    background-color: #7fffd4;
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/245/543/796/desert-bomb-serious-sam-hd-wallpaper-preview.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 3rem 0;
+    position: relative;
 }
 
 div.square-box{
     width: 700px;
     height: 700px;
     border: 2px solid black;
+    background-color: rgba(255, 255, 255, 0.466);
 }
 
 div.square{
@@ -33,4 +37,29 @@ div.logo h1{
 
 div.square.active.boom{
     background-color: red;
+}
+
+div#div-score{
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    text-align: center;
+    background-color: rgb(223, 96, 96);
+    width: 20%;
+    padding: .5rem;
+}
+
+div#div-score h2{
+    border-bottom: 2px solid black;
+    padding-bottom: 1rem;
+}
+
+img#bomb-gif{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+
+    transform: translate(-60%, -60%);
+    display: none;
 }

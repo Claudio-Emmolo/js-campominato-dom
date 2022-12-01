@@ -18,6 +18,14 @@ btn.addEventListener('click', function(){
     
 })
 
+const bombList = [];
+
+while (bombList.length < 16){
+    const randomNumberGen = getRandomNumberUnique(bombList, 1, 100);
+    bombList.push(randomNumberGen);
+}
+
+console.log(bombList)
 
 
 // ----------------- FUNCTIONS ----------------- //
@@ -28,3 +36,22 @@ function getDivElement (){
     return divElement;
 }
 
+function getRandomNumber(firstNumber, secondNumber){
+    const numberRandom = Math.floor(Math.random() * (secondNumber - firstNumber + 1) + firstNumber);
+    return numberRandom;
+}
+
+function getRandomNumberUnique (blacklist, min, max){
+    let isValid = false;
+    let randomNum;
+
+    while (isValid == false){
+        randomNum = getRandomNumber(min, max);
+
+        if (!blacklist.includes(randomNum)){
+            isValid = true;
+        }
+    }
+
+    return randomNum;
+}

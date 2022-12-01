@@ -6,9 +6,13 @@ const scoreElement = document.getElementById("score");
 
 const clickedNumbers = [];
 
+const bombList = [];
+
 let gameStatus = false;
 
 let score = 0;
+
+let exitSingleNum;
 
 btn.addEventListener('click', function(){
 
@@ -17,21 +21,25 @@ btn.addEventListener('click', function(){
 
     gameStatus = true;
 
+
     for (let i = 0 ; i < 100 ; i++){
         const addDiv = getDivElement();
         addDiv.addEventListener('click', function(){
             addDiv.classList.toggle("active");
             console.log(i + 1);
             clickedNumbers.push(i + 1);
+            exitSingleNum = i + 1;
             score += 1;
             scoreElement.innerText = (score);
+            
+            if (bombList.includes(exitSingleNum)){
+                console.log('Bomba');
+            }
         })
         addDiv.innerText = (i + 1);
         squareBox.append(addDiv);
     }
-    
-    const bombList = [];
-    
+        
     while (bombList.length < 16){
         const randomNumberGen = getRandomNumberUnique(bombList, 1, 100);
         bombList.push(randomNumberGen);
@@ -39,6 +47,10 @@ btn.addEventListener('click', function(){
 
     console.log(bombList);
     console.log(clickedNumbers);
+    console.log(exitSingleNum)
+    
+
+
 
 })
 

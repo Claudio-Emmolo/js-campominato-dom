@@ -6,24 +6,22 @@ const scoreElement = document.getElementById("score");
 
 const clickedNumbers = [];
 
-const bombList = [];
-
-let gameStatus = false;
-
-let score = 0;
-
 let exitSingleNum;
 
 btn.addEventListener('click', function(){
-    gameStatus = true;
+    let gameStatus = true;
     squareBox.innerHTML = "";
-    score = 0;
+    let bombList = [];
+    let score = 0;
     scoreElement.innerText = (score);
 
  // Inizio il gioco
     for (let i = 0 ; i < 100 ; i++){ // Genero i 100 numeri
         const addDiv = getDivElement();
         addDiv.addEventListener('click', function(){
+            if (gameStatus == false) {
+                return;
+            }
             addDiv.classList.toggle("active");
             console.log(i + 1);
             clickedNumbers.push(i + 1);
@@ -38,7 +36,12 @@ btn.addEventListener('click', function(){
             } else {
                 score += 1;
                 scoreElement.innerText = (score);
+                if (score == (100 - 16)){
+                    scoreElement.innerText = ("Hai vinto!");
+                    gameStatus = false;
+                }
             }
+            
 
         }, {once : true})
         addDiv.innerText = (i + 1);
@@ -52,20 +55,7 @@ btn.addEventListener('click', function(){
 
     console.log(bombList);
     console.log(clickedNumbers);
-    console.log(exitSingleNum)
-    
-    if (score == (100 - 16)){
-        scoreElement.innerText = ("Hai vinto!");
-        gameStatus = false;
-    }
-
-if (gameStatus == false) {
-    score = 0;
-    scoreElement.innerText = (score);
-    clickedNumbers = [];
-    bombList = [];
-
-}
+    console.log(exitSingleNum);
 })
 
 

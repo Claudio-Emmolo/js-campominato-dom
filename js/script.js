@@ -58,6 +58,14 @@ btn.addEventListener('click', function(){
         scoreElement.innerText = ("Hai vinto!");
         gameStatus = false;
     }
+
+if (gameStatus == false) {
+    score = 0;
+    scoreElement.innerText = (score);
+    clickedNumbers = [];
+    bombList = [];
+
+}
 })
 
 

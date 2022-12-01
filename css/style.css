@@ -30,3 +30,7 @@ div.logo img{
 div.logo h1{
     font-size: 3rem;
 }
+
+div.square.active.boom{
+    background-color: red;
+}

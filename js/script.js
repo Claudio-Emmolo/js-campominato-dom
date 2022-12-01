@@ -36,7 +36,8 @@ btn.addEventListener('click', function(){
             if (bombList.includes(exitSingleNum)){
                 console.log('Bomba');
                 scoreElement.innerText = (`Hai perso! Il tuo punteggio è: ${score}`);
-                gameStatus = false
+                gameStatus = false;
+                addDiv.classList.add("boom");
             } else {
                 score += 1;
                 scoreElement.innerText = (score);

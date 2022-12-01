@@ -2,13 +2,16 @@ const btn = document.getElementById ("start");
 
 const squareBox = document.querySelector ("div.square-box");
 
+const scoreElement = document.getElementById("score");
+
+const clickedNumbers = [];
+
 let gameStatus = false;
 
 let score = 0;
 
 btn.addEventListener('click', function(){
 
-    const clickedNumbers = [];
 
     squareBox.innerHTML = "";
 
@@ -20,6 +23,8 @@ btn.addEventListener('click', function(){
             addDiv.classList.toggle("active");
             console.log(i + 1);
             clickedNumbers.push(i + 1);
+            score += 1;
+            scoreElement.innerText = (score);
         })
         addDiv.innerText = (i + 1);
         squareBox.append(addDiv);
@@ -31,12 +36,9 @@ btn.addEventListener('click', function(){
         const randomNumberGen = getRandomNumberUnique(bombList, 1, 100);
         bombList.push(randomNumberGen);
     }
-    
+
     console.log(bombList);
     console.log(clickedNumbers);
-
-
-    
 
 })
 

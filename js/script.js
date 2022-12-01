@@ -16,24 +16,21 @@ let exitSingleNum;
 
 btn.addEventListener('click', function(){
     gameStatus = true;
-
+    squareBox.innerHTML = "";
     score = 0;
     scoreElement.innerText = (score);
 
-    squareBox.innerHTML = "";
-
-
-
-    for (let i = 0 ; i < 100 ; i++){
+ // Inizio il gioco
+    for (let i = 0 ; i < 100 ; i++){ // Genero i 100 numeri
         const addDiv = getDivElement();
         addDiv.addEventListener('click', function(){
             addDiv.classList.toggle("active");
             console.log(i + 1);
             clickedNumbers.push(i + 1);
-            exitSingleNum = i + 1;
+            exitSingleNum = i + 1; // Controllo in tempo reale il numero che ho cliccato
             
             
-            if (bombList.includes(exitSingleNum)){
+            if (bombList.includes(exitSingleNum)){ // Controllo se un numero nella lista delle bombe è stato cliccato 
                 console.log('Bomba');
                 scoreElement.innerText = (`Hai perso! Il tuo punteggio è: ${score}`);
                 gameStatus = false;
@@ -43,12 +40,12 @@ btn.addEventListener('click', function(){
                 scoreElement.innerText = (score);
             }
 
-        })
+        }, {once : true})
         addDiv.innerText = (i + 1);
         squareBox.append(addDiv);
     }
         
-    while (bombList.length < 16){
+    while (bombList.length < 16){//Genero 16 bombe
         const randomNumberGen = getRandomNumberUnique(bombList, 1, 100);
         bombList.push(randomNumberGen);
     }
@@ -59,9 +56,8 @@ btn.addEventListener('click', function(){
     
     if (score == (100 - 16)){
         scoreElement.innerText = ("Hai vinto!");
+        gameStatus = false;
     }
-
-
 })
 
 

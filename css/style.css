@@ -1,0 +1,32 @@
+main{
+    background-color: #7fffd4;
+    padding: 3rem 0;
+}
+
+div.square-box{
+    width: 700px;
+    height: 700px;
+    border: 2px solid black;
+}
+
+div.square{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 2px solid black;
+    cursor: crosshair;
+}
+
+div.square.active{
+    background-color: rgb(46, 137, 255);
+}
+
+div.logo img{
+    height: 80px;
+}
+
+div.logo h1{
+    font-size: 3rem;
+}

@@ -2,9 +2,15 @@ const btn = document.getElementById ("start");
 
 const squareBox = document.querySelector ("div.square-box");
 
+let gameStatus = false;
+
+let score = 0
+
 btn.addEventListener('click', function(){
 
     squareBox.innerHTML = "";
+
+    gameStatus = true;
 
     for (let i = 0 ; i < 100 ; i++){
         const AddDiv = getDivElement();
@@ -16,16 +22,16 @@ btn.addEventListener('click', function(){
         squareBox.append(AddDiv);
     }
     
+    const bombList = [];
+    
+    while (bombList.length < 16){
+        const randomNumberGen = getRandomNumberUnique(bombList, 1, 100);
+        bombList.push(randomNumberGen);
+    }
+    
+    console.log(bombList)
 })
 
-const bombList = [];
-
-while (bombList.length < 16){
-    const randomNumberGen = getRandomNumberUnique(bombList, 1, 100);
-    bombList.push(randomNumberGen);
-}
-
-console.log(bombList)
 
 
 // ----------------- FUNCTIONS ----------------- //
